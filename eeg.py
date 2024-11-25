@@ -10,12 +10,6 @@ data = {
   "Fossile Energie & Kernenergie": [554.8, 550.1, 534.9, 526.4, 487.5, 512.5, 484.8, 465.0, 453.5, 430.8, 410.6, 409.5, 384.2, 369.3, 334.0, 304.3, 334.5, 295.9, 247.5 ]
 }
 
-df = pd.DataFrame(data)
-
-import pandas as pd
-
-import pandas as pd
-
 data_eeg = {
     "Jahr": [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
     "Wasserkraft": [19344, 19718, 20811, 20134, 18743, 20682, 17326, 21332, 22660, 19310, 18665, 20215, 19985, 17926, 19957, 18546, 19483, 17458, 19721 ],
@@ -32,16 +26,19 @@ data_eeg = {
     "Geothermie ": [0, 0, 0, 12, 13, 20, 19, 25, 69, 67, 91, 164, 157, 126, 144, 173, 174, 152, 139 ]
 }
 
+df = pd.DataFrame(data)
 df_eeg = pd.DataFrame(data_eeg)
 
 #------------------------------------------------
 # Streamlit App
-st.set_page_config(layout="centered")
+st.set_page_config(layout="centered", page_title="Bruttostromerzeugung: Entwicklung der Erneuerbaren Energien", page_icon=":material/wind_power:")
+
+
 with st.sidebar.expander(label=":material/info: Quellen"):
     st.link_button(label="Bundesministerium für Wirtschaft & Klimaschutz",url="https://www.bmwk.de/Redaktion/DE/Downloads/Energie/erneuerbare-energien-in-de-tischvorlage.pdf?__blob=publicationFile&v=12")
     st.link_button(label="Umweltbundesamt",url="https://www.umweltbundesamt.de/themen/klima-energie/erneuerbare-energien/erneuerbare-energien-in-zahlen#emissionsbilanz")
 
-tab1, tab2 = st.tabs(["Bruttostromerzeugung","Art der Erneuerbaren Energien"])
+tab1, tab2 = st.tabs(["Bruttostromerzeugung","Technologien zur Stromerzeugung"])
 
 with tab1:
     # Streamlit App
@@ -89,3 +86,6 @@ with tab2:
     st.altair_chart(chart, theme="streamlit", use_container_width=True)
     
 st.markdown("Stand 25.11.2024")
+
+st.header("**Was bedeutet das?**")
+st.markdown("Erneuerbare Energien gewinnen zunehmend an Bedeutung. Im Jahr 2023 wurde erstmals mehr Strom mit Erneuerbaren Energien als mit fossilen Energieträgern & Kernenergie erzeugt. Die Zwischenziele des EEG von 2014 wurden somit diesbezüglich erreicht. Jedoch muss der Ausbau und die Nutzung der Erneuerbaren Energien durch Sektorenkopplung auch außerhalb der Stromerzeugung eine noch größere Rolle spielen.")
